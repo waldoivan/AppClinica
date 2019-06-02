@@ -1,39 +1,30 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+
+// Módulos de la Aplicación
+import {PagesModule} from './pages/pages.module';
+
+
 // Rutas
 import { APP_ROUTES } from './app.routes';
+
 
 // Componentes
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { ProgressComponent } from './pages/progress/progress.component';
-import { Graficas1Component } from './pages/graficas1/graficas1.component';
-import { NopagefoundComponent } from './pages/nopagefound/nopagefound.component';
-import { HeaderComponent } from './pages/shared/header/header.component';
-import { SidebarComponent } from './pages/shared/sidebar/sidebar.component';
-import { BreadcrumbsComponent } from './pages/shared/breadcrumbs/breadcrumbs.component';
-import { RouterModule } from '@angular/router';
-import { PagesComponent } from './pages/pages.component';
 import { RegisterComponent } from './login/register.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    DashboardComponent,
-    ProgressComponent,
-    Graficas1Component,
-    NopagefoundComponent,
-    HeaderComponent,
-    SidebarComponent,
-    BreadcrumbsComponent,
-    PagesComponent,
     RegisterComponent
   ],
   imports: [
     BrowserModule,
+    PagesModule,
     APP_ROUTES
   ],
   providers: [],
