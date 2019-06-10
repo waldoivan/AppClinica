@@ -23,6 +23,7 @@ import { PolarchartComponent } from '../personalizados/polarchart/polarchart.com
 import { BubblechartComponent } from '../personalizados/bubblechart/bubblechart.component';
 import { ScatterchartComponent } from '../personalizados/scatterchart/scatterchart.component';
 import { DynamicchartComponent } from '../personalizados/dynamicchart/dynamicchart.component';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { DynamicchartComponent } from '../personalizados/dynamicchart/dynamiccha
         PolarchartComponent,
         BubblechartComponent,
         ScatterchartComponent,
-        DynamicchartComponent
+        DynamicchartComponent,
+        AccountSettingsComponent
     ],
     exports: [
         PagesComponent,

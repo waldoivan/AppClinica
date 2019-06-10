@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserSettingsService } from './servicios/settings-services/user-settings.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'appClinica';
+
+  constructor(public _ajustes: UserSettingsService){}
 }

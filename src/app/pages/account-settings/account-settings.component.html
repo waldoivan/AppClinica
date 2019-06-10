@@ -1,0 +1,64 @@
+<p>
+    account-settings works!
+</p>
+
+<div class="row">
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Seleccione el Color de su Panel</h4>
+                <hr>
+                <div class="r-panel-body">
+                    <ul id="themecolors" class="m-t-20">
+                        <li><b>Con el sidebar claro</b></li>
+                        <li><a (click)="cambiarColor('default', $event.target)" class="selector default-theme">1</a></li>
+                        <li><a (click)="cambiarColor('green', $event.target)" class="selector green-theme">2</a></li>
+                        <li><a (click)="cambiarColor('red', $event.target)" class="selector red-theme">3</a></li>
+                        <li><a (click)="cambiarColor('blue', $event.target)" class="selector blue-theme">4</a></li>
+                        <li><a (click)="cambiarColor('purple', $event.target)" class="selector purple-theme">5</a></li>
+                        <li><a (click)="cambiarColor('megna', $event.target)" class="selector megna-theme">6</a></li>
+
+                        <li class="d-block m-t-30"><b>Con el sidebar oscuro</b></li>
+                        <li><a (click)="cambiarColor('default-dark', $event.target)" data-theme="default-dark" class="selector default-dark-theme">7</a></li>
+                        <li><a (click)="cambiarColor('green-dark', $event.target)" data-theme="green-dark" class="selector green-dark-theme">8</a></li>
+                        <li><a (click)="cambiarColor('red-dark', $event.target)" data-theme="red-dark" class="selector red-dark-theme">9</a></li>
+                        <li><a (click)="cambiarColor('blue-dark', $event.target)" data-theme="blue-dark" class="selector blue-dark-theme">10</a></li>
+                        <li><a (click)="cambiarColor('purple-dark', $event.target)" data-theme="purple-dark" class="selector purple-dark-theme">11</a></li>
+                        <li><a (click)="cambiarColor('megna-dark', $event.target)" data-theme="megna-dark" class="selector megna-dark-theme">12</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- RESPALDO -->
+<!-- <div class="row">
+    <div class="col-4">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title"></h4>
+                <hr>
+                <div class="r-panel-body">
+                    <ul id="themecolors" class="m-t-20">
+                        <li><b>Con el sidebar claro</b></li>
+                        <li><a #link1 (click)="cambiarColor('default-theme', link1)" class="selector default-theme">1</a></li>
+                        <li><a #link2 (click)="cambiarColor('green-theme', link2)" class="selector green-theme">2</a></li>
+                        <li><a #link3 (click)="cambiarColor('red-theme', link3)" class="selector red-theme">3</a></li>
+                        <li><a #link4 (click)="cambiarColor('blue-theme', link4)" class="selector blue-theme">4</a></li>
+                        <li><a #link5 (click)="cambiarColor('purple-theme', link5)" class="selector purple-theme">5</a></li>
+                        <li><a #link6 (click)="cambiarColor('megna-theme', link6)" class="selector megna-theme">6</a></li>
+
+                        <li class="d-block m-t-30"><b>Con el sidebar oscuro</b></li>
+                        <li><a #link6 (click)="cambiarColor('default-dark', link6)" data-theme="default-dark" class="selector default-dark-theme">7</a></li>
+                        <li><a #link7 (click)="cambiarColor('green-dark', link7)" data-theme="green-dark" class="selector green-dark-theme">8</a></li>
+                        <li><a #link8 (click)="cambiarColor('red-dark', link8)" data-theme="red-dark" class="selector red-dark-theme">9</a></li>
+                        <li><a #link9 (click)="cambiarColor('blue-dark', link9)" data-theme="blue-dark" class="selector blue-dark-theme working">10</a></li>
+                        <li><a #link10 (click)="cambiarColor('purple-dark', link10)" data-theme="purple-dark" class="selector purple-dark-theme">11</a></li>
+                        <li><a #link11 (click)="cambiarColor('megna-dark', link11)" data-theme="megna-dark" class="selector megna-dark-theme">12</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
