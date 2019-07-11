@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 // Módulos de la Aplicación
-import {FormsModule} from '@angular/forms';
 import {PagesModule} from './pages/pages.module';
 
 // Rutas
@@ -28,6 +28,7 @@ import { RegisterComponent } from './login/register.component';
     PagesModule,
     APP_ROUTES,
     FormsModule,
+    ReactiveFormsModule,
     ServiceModule
   ],
   providers: [],
