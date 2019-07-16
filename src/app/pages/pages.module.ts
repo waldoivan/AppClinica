@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { ChartsModule } from 'ng2-charts';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 
 // Módulos de la Aplicación
@@ -8,6 +9,9 @@ import { SharedModule } from './shared/shared.module';
 
 // Rutas del Módulo PAGES
 import { PAGES_ROUTES } from './pages.routes';
+
+// Pipes
+import { PipesModule } from '../pipes/pipes.module';
 
 // Componentes
 import { PagesComponent } from './pages.component';
@@ -24,6 +28,9 @@ import { BubblechartComponent } from '../personalizados/bubblechart/bubblechart.
 import { ScatterchartComponent } from '../personalizados/scatterchart/scatterchart.component';
 import { DynamicchartComponent } from '../personalizados/dynamicchart/dynamicchart.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
+import { ProfileComponent } from './profile/profile.component';
+import { PromesasComponent } from './promesas/promesas.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 
 @NgModule({
@@ -41,28 +48,19 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
         BubblechartComponent,
         ScatterchartComponent,
         DynamicchartComponent,
-        AccountSettingsComponent
+        AccountSettingsComponent,
+        ProfileComponent,
+        PromesasComponent,
+        RxjsComponent
     ],
-    exports: [
-        PagesComponent,
-        DashboardComponent,
-        ProgressComponent,
-        Graficas1Component,
-        BarChartComponent,
-        PiechartComponent,
-        LinechartComponent,
-        DonutchartComponent,
-        RadarchartComponent,
-        PolarchartComponent,
-        BubblechartComponent,
-        ScatterchartComponent,
-        DynamicchartComponent
-    ],
+    exports: [],
     imports: [
         SharedModule,
         PAGES_ROUTES,
         ChartsModule,
-        CommonModule
+        CommonModule,
+        FormsModule,
+        PipesModule
     ]
 })
 export class PagesModule { }

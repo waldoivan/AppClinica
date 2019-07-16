@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { UsuarioService } from '../servicios/service.index';
 import { Usuario } from '../models/usuario.model';
 
-// import swal from 'sweetalert';
+import Swal from 'sweetalert2';
 
 // Inicializa los Scripts del Custom.js
 declare function init_plugins();
@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
 
   forma: FormGroup;
 
-  constructor(public _UsuarioService: UsuarioService,public router: Router) { }
+  constructor(public _usuarioService: UsuarioService, public router: Router) { }
 
     sonIguales(campo1: string, campo2: string) {
 
@@ -59,9 +59,13 @@ export class RegisterComponent implements OnInit {
       return;
     }
     if (!this.forma.value.condiciones) {
-     // swal('Debe aceptar los Términos y Condiciones!', 'Intenta otra vez!', 'warning');
-     alert('Debe aceptar los Términos y Condiciones!');
-     return;
+      Swal.fire({
+      title: 'Uppps!',
+      text: 'Debe aceptar los términos y condiciones!',
+      type: 'error',
+      confirmButtonText: 'Entendido'
+    });
+      return;
     }
 
     const usuario = new Usuario(
@@ -72,7 +76,7 @@ export class RegisterComponent implements OnInit {
       this.forma.value.password
     );
 
-    this._UsuarioService.crearUsuarioNuevo(usuario)
+    this._usuarioService.crearUsuarioNuevo(usuario)
             .subscribe(resp => {
               // Redirecciona hacia el Login una vez creado el nuevo usuario
               this.router.navigate(['/login']);

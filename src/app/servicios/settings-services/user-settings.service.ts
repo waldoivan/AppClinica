@@ -17,7 +17,6 @@ export class UserSettingsService {
      }
 
   guardarAjustesUsuario() {
-    // console.log('Guardado en el LocalStorage');
     localStorage.setItem('ajustes', JSON.stringify(this.ajustes));
   }
 

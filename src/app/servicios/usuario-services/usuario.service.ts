@@ -6,6 +6,8 @@ import { map } from 'rxjs/operators';
 // Actualizar la Importación al cambiar a Environment.ts
 import { URL_SERVICIOS } from '../../config/config';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+import { SubirArchivoService } from '../subir-archivo/subir-archivo.service';
 
 
 @Injectable({
@@ -17,7 +19,7 @@ export class UsuarioService {
   tokenUsuarioLog: string;
 
 
-  constructor(public http: HttpClient, public router: Router) {
+  constructor(public http: HttpClient, public router: Router, public _subirArchivoService: SubirArchivoService) {
     this.cargarStorage();
    }
 
@@ -87,8 +89,52 @@ guardarLocalStorage(id: string, token: string, usuario: Usuario) {
     const url = URL_SERVICIOS + '/usuario';
     return this.http.post(url, usuario).pipe(
     map((resp: any) => {
-        alert('Usuario Creado exitosamente' + usuario.email);
+        Swal.fire({
+          title: 'Perfecto!',
+          text: `Usuario creado con Éxito!: ${usuario.email}`,
+          type: 'success',
+          confirmButtonText: 'Entendido'
+        });
         return resp.usuario;
     }));
   }
+
+    // DEPURAR: falta completar con el apellido aterno y materno
+  actualizarUsuario(usuario: Usuario) {
+    let url = URL_SERVICIOS + '/usuario/' + usuario._id;
+    url += '?token=' + this.tokenUsuarioLog;
+    return this.http.put(url, usuario)
+                    .pipe(
+                      map((resp: any) => {
+                        // this.usuarioLogeado = resp.usuario;
+                        const usuarioDB: Usuario = resp.usuario;
+                        this.guardarLocalStorage(usuarioDB._id, this.tokenUsuarioLog, usuarioDB);
+                        Swal.fire({
+                          title: 'Perfecto!',
+                          text: 'Usuario actualizado con Éxito!',
+                          type: 'success',
+                          confirmButtonText: 'Entendido'
+                        });
+                        return true;
+                      })
+                    );
+  }
+
+  actualizarImagen(archivo: File, id: string) {
+  this._subirArchivoService.subirArchivo(archivo, 'usuarios', id )
+      .then((resp: any) => {
+        this.usuarioLogeado.img = resp.usuario.img;
+        Swal.fire({
+          title: 'Perfecto!',
+          text: 'Imagen actualizada con Éxito!',
+          type: 'success',
+          confirmButtonText: 'OK'
+        });
+        this.guardarLocalStorage(id, this.tokenUsuarioLog, this.usuarioLogeado);
+      })
+      .catch(resp => {
+        console.log(resp);
+      });
+  }
+
 }
