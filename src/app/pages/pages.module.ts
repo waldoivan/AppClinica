@@ -31,6 +31,12 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 import { ProfileComponent } from './profile/profile.component';
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
+import { ModalUploadComponent } from '../components/modal-upload/modal-upload.component';
+
+
+// Temporal
+import { IncrementadorComponent } from '../components/incrementador/incrementador.component';
 
 
 @NgModule({
@@ -51,7 +57,10 @@ import { RxjsComponent } from './rxjs/rxjs.component';
         AccountSettingsComponent,
         ProfileComponent,
         PromesasComponent,
-        RxjsComponent
+        RxjsComponent,
+        UsuariosComponent,
+        ModalUploadComponent,
+        IncrementadorComponent
     ],
     exports: [],
     imports: [

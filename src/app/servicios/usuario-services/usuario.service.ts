@@ -99,16 +99,17 @@ guardarLocalStorage(id: string, token: string, usuario: Usuario) {
     }));
   }
 
-    // DEPURAR: falta completar con el apellido aterno y materno
+    // DEPURAR: falta completar con el apellido paterno y materno
   actualizarUsuario(usuario: Usuario) {
     let url = URL_SERVICIOS + '/usuario/' + usuario._id;
     url += '?token=' + this.tokenUsuarioLog;
     return this.http.put(url, usuario)
                     .pipe(
                       map((resp: any) => {
-                        // this.usuarioLogeado = resp.usuario;
-                        const usuarioDB: Usuario = resp.usuario;
-                        this.guardarLocalStorage(usuarioDB._id, this.tokenUsuarioLog, usuarioDB);
+                        if (usuario._id === this.usuarioLogeado._id) {
+                          const usuarioDB: Usuario = resp.usuario;
+                          this.guardarLocalStorage(usuarioDB._id, this.tokenUsuarioLog, usuarioDB);
+                        }
                         Swal.fire({
                           title: 'Perfecto!',
                           text: 'Usuario actualizado con Éxito!',
@@ -136,5 +137,36 @@ guardarLocalStorage(id: string, token: string, usuario: Usuario) {
         console.log(resp);
       });
   }
+
+  cargarUsuarios(desde: number = 0) {
+    const url = URL_SERVICIOS + '/usuario/?desdeRegistro=' + desde;
+    return this.http.get(url); // el return en un servicio ES para avisar al componente el resultado del servicio
+
+  }
+
+  buscarUsuarios(termino: string) {
+    const url = URL_SERVICIOS + '/busqueda/coleccion/usuarios/' + termino;
+    return this.http.get(url)
+    .pipe(map((resp: any) => resp.usuarios)
+    );
+  }
+
+  borrarUsuario(id: string) {
+    let url = URL_SERVICIOS + '/usuario/' + id;
+    url += '?token=' + this.tokenUsuarioLog;
+
+    return this.http.delete(url)
+          .pipe(
+            map( resp => {
+              Swal.fire(
+              'Borrado!',
+              'El usuario Eliminado correctamente',
+              'success'
+              );
+              return true;
+            })
+          );
+  }
+
 
 }
