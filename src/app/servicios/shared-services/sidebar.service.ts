@@ -21,9 +21,9 @@ export class SidebarService {
       titulo: 'Mantenimientos',
       icono: 'mdi mdi-folder-lock-open',
       submenu: [
-        {titulo: 'Usuarios', url: '/usuarios'},
-        {titulo: 'Centros', url: '/centrossalud'},
-        {titulo: 'Médicos', url: '/medicos'},
+        {titulo: 'Usuarios del Sistema', url: '/usuarios'},
+        {titulo: 'Centros de Salud', url: '/centrossalud'},
+        {titulo: 'Profesionales de Salud', url: '/profesionalessalud'},
       ]
     }
   ];

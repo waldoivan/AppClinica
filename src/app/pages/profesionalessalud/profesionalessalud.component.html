@@ -1,0 +1,99 @@
+<p>
+    Profesionales Salud works!
+</p>
+<div class="row animated fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <input #inputProfesionalSalud (keyup)="buscarProfesionalSalud(inputProfesionalSalud.value)" type="text" class="form-control" placeholder="Buscar profesional de salud...">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="cargando" class="row animated fadeIn">
+    <div class="col-sm-12">
+        <div class="alert alert-warning text-center">
+            <strong>Cargando</strong>
+            <br>
+            <i class="fa fa-refresh fa-spin fa-2x"></i>
+            <br>
+            <span>Espere por favor...</span>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="!cargando" class="row animated fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row animated fadeIn justify-content-end mr-1">
+                    <button (click)="crearProfesionalSaludNuevo(profesionalessalud)" type="button" class="btn waves-effect waves-light btn-rounded btn-primary">
+                          <i class="fa fa-plus"></i>
+                      Crear Profesional</button>
+                </div>
+
+                <h3 class="card-title mt-3">Profesionales de Salud Registrados (<small>{{totalRegistros}}</small>)</h3>
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Imagen</th>
+                            <th>Rut</th>
+                            <th>Nombre</th>
+                            <th>Ap. Paterno</th>
+                            <th>Ap. Materno</th>
+                            <th>Email</th>
+                            <!-- <th>Profesión</th> -->
+                            <th>Guar./Elim.</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let profesional of profesionalessalud">
+                            <td class="w70">
+                                <img (click)="mostrarModal(profesional._id)" [src]="profesional.img | imagen:'profesionalessalud'" class="img-50 img-circle pointer">
+                            </td>
+                            <td>
+                                <input [(ngModel)]="profesional.rut" name="rut" type="text" class="form-control" placeholder="Rut del profesional">
+                            </td>
+                            <td>
+                                <input [(ngModel)]="profesional.nombre" name="nombre" type="text" class="form-control" placeholder="Nombre del profesional">
+                            </td>
+                            <td>
+                                <input [(ngModel)]="profesional.appaterno" name="appaterno" type="text" class="form-control" placeholder="Apellido paterno del profesional">
+                            </td>
+                            <td>
+                                <input [(ngModel)]="profesional.apmaterno" name="apmaterno" type="text" class="form-control" placeholder="Apellido materno del profesional">
+                            </td>
+                            <td>
+                                <input [(ngModel)]="profesional.email" name="email" type="text" class="form-control" placeholder="Email del centro salud">
+                            </td>
+                            <!-- <td>
+                                <input [(ngModel)]="profesional.profesion" name="profesion" type="text" class="form-control" placeholder="Profesión del profesional de salud">
+                            </td> -->
+                            <!-- <td>
+                                <label *ngIf="centro.estatal" class="label label-danger">Público</label>
+                                <label *ngIf="!centro.estatal" class="label label-info">Privado</label>
+                            </td> -->
+                            <td>
+                                <button (click)="guardarProfesionalSalud(profesional)" class="btn btn-primary">
+                              <i class="fa fa-save"></i>
+                              </button>
+
+                                <button (click)="borrarProfesionalSalud(profesional)" class="btn btn-danger">
+                              <i class="fa fa-trash-o"></i>
+                            </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button (click)="cambiarDesde(-5)" class="btn btn-secondary">
+                Anteriores
+              </button>
+                <button (click)="cambiarDesde(5)" class="btn btn-secondary">
+                  Siguientes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

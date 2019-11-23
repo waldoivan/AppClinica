@@ -37,6 +37,10 @@ import { ModalUploadComponent } from '../components/modal-upload/modal-upload.co
 
 // Temporal
 import { IncrementadorComponent } from '../components/incrementador/incrementador.component';
+import { CentrosSaludComponent } from './centrossalud/centrossalud.component';
+import { ProfesionalesSaludComponent } from './profesionalessalud/profesionalessalud.component';
+import { ProfesionalSaludComponent } from './profesionalsalud/profesionalsalud.component';
+import { CentroSaludComponent } from './centrosalud/centrosalud.component';
 
 
 @NgModule({
@@ -60,7 +64,11 @@ import { IncrementadorComponent } from '../components/incrementador/incrementado
         RxjsComponent,
         UsuariosComponent,
         ModalUploadComponent,
-        IncrementadorComponent
+        IncrementadorComponent,
+        CentrosSaludComponent,
+        ProfesionalesSaludComponent,
+        ProfesionalSaludComponent,
+        CentroSaludComponent
     ],
     exports: [],
     imports: [

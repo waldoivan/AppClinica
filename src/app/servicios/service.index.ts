@@ -4,3 +4,6 @@ export { SharedService } from './shared-services/shared.service';
 export { SidebarService } from './shared-services/sidebar.service';
 export { UsuarioService } from './usuario-services/usuario.service';
 export { SubirArchivoService } from './subir-archivo/subir-archivo.service';
+export { CentrosaludService } from './centros-salud/centros-salud.service';
+export { ModalUploadService } from '../components/modal-upload/modal-upload.service';
+export { ProfesionalesServiceService } from '../servicios/profesionales-service/profesionales-service.service';

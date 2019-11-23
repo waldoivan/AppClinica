@@ -1,0 +1,87 @@
+<div class="row animated fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <input #inputCentroSalud (keyup)="buscarCentrosSalud(inputCentroSalud.value)" type="text" class="form-control" placeholder="Buscar centro de salud...">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="cargando" class="row animated fadeIn">
+    <div class="col-sm-12">
+        <div class="alert alert-warning text-center">
+            <strong>Cargando</strong>
+            <br>
+            <i class="fa fa-refresh fa-spin fa-2x"></i>
+            <br>
+            <span>Espere por favor...</span>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="!cargando" class="row animated fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row animated fadeIn justify-content-end mr-1">
+                    <button (click)="crearCentroSaludNuevo(centrossalud)" type="button" class="btn waves-effect waves-light btn-rounded btn-primary">
+                            <i class="fa fa-plus"></i>
+                        Crear Hospital</button>
+                </div>
+
+                <h3 class="card-title mt-3">Centros de Salud Registrados (<small>{{totalRegistros}}</small>)</h3>
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Imagen</th>
+                            <th>Rut</th>
+                            <th>Nombre Fantasia</th>
+                            <th>Email</th>
+                            <th>Publ./Priv.</th>
+                            <th>Guar./Elim.</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let centro of centrossalud">
+                            <td class="w70">
+                                <img (click)="mostrarModal(centro._id)" [src]="centro.img | imagen:'centrossalud'" class="img-50 img-circle pointer">
+                            </td>
+                            <td>
+                                <input [(ngModel)]="centro.rutcentro" name="rut" type="text" class="form-control" placeholder="Rut centro salud">
+                            </td>
+                            <td>
+                                <input [(ngModel)]="centro.nombrefantasia" name="nombrefantasia" type="text" class="form-control" placeholder="Nombre Fantasía del Centro Salud">
+                            </td>
+                            <td>
+                                <input [(ngModel)]="centro.email" name="email" type="text" class="form-control" placeholder="Email del Centro Salud">
+                            </td>
+
+                            <td>
+                                <label *ngIf="centro.estatal" class="label label-danger">Público</label>
+                                <label *ngIf="!centro.estatal" class="label label-info">Privado</label>
+                            </td>
+                            <td>
+                                <button (click)="guardarCentroSalud(centro)" class="btn btn-primary">
+                                <i class="fa fa-save"></i>
+                                </button>
+
+                                <button (click)="borrarCentroSalud(centro)" class="btn btn-danger">
+                                <i class="fa fa-trash-o"></i>
+                              </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button (click)="cambiarDesde(-5)" class="btn btn-secondary">
+                  Anteriores
+                </button>
+                <button (click)="cambiarDesde(5)" class="btn btn-secondary">
+                    Siguientes
+                  </button>
+            </div>
+        </div>
+    </div>
+</div>

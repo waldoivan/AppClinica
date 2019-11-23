@@ -121,6 +121,7 @@ guardarLocalStorage(id: string, token: string, usuario: Usuario) {
                     );
   }
 
+
   actualizarImagen(archivo: File, id: string) {
   this._subirArchivoService.subirArchivo(archivo, 'usuarios', id )
       .then((resp: any) => {
@@ -134,15 +135,16 @@ guardarLocalStorage(id: string, token: string, usuario: Usuario) {
         this.guardarLocalStorage(id, this.tokenUsuarioLog, this.usuarioLogeado);
       })
       .catch(resp => {
-        console.log(resp);
       });
   }
+
 
   cargarUsuarios(desde: number = 0) {
     const url = URL_SERVICIOS + '/usuario/?desdeRegistro=' + desde;
     return this.http.get(url); // el return en un servicio ES para avisar al componente el resultado del servicio
 
   }
+
 
   buscarUsuarios(termino: string) {
     const url = URL_SERVICIOS + '/busqueda/coleccion/usuarios/' + termino;
@@ -151,10 +153,10 @@ guardarLocalStorage(id: string, token: string, usuario: Usuario) {
     );
   }
 
+
   borrarUsuario(id: string) {
     let url = URL_SERVICIOS + '/usuario/' + id;
     url += '?token=' + this.tokenUsuarioLog;
-
     return this.http.delete(url)
           .pipe(
             map( resp => {

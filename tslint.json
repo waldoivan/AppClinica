@@ -21,6 +21,10 @@
             "app",
             "kebab-case"
         ],
+        "variable-name": [true,
+            "check-format",
+            "allow-leading-underscore"
+        ],
         "import-blacklist": [
             true,
             "rxjs/Rx"
